@@ -1,6 +1,7 @@
+/iso/
+/tmp
 build.err
 build.out
 *.box
-/iso/
 !.gitkeep
 
