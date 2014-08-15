@@ -1,7 +1,5 @@
-/iso/
+/iso
 /tmp
-build.err
-build.out
 *.box
 !.gitkeep
 
