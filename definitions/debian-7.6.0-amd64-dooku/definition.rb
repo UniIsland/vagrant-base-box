@@ -49,7 +49,7 @@ Veewee::Definition.declare({
     "base.sh",
     "vagrant.sh",
     "virtualbox.sh",
-    "puppet.sh",
+    #"puppet.sh",
     "cleanup.sh",
     "zerodisk.sh"
   ],
