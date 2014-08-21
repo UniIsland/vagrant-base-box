@@ -10,7 +10,7 @@ install virtualbox vagrant
 
 ## prepare
 bundle install
-veewee-templates-updater
+veewee-templates-update
 
 ## get example definition
 veewee vbox templates
