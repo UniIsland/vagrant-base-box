@@ -15,10 +15,17 @@ veewee-templates-update
 ## get example definition
 veewee vbox templates
 
-## iso
+## debian iso
+#wget -P ./iso http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso 
+curl -Lo ./iso/debian-testing-amd64-netinst_$(date +%Y%m%d).iso http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso
+ln -sf debian-testing-amd64-netinst_$(date +%Y%m%d).iso ./iso/debian-testing-amd64-netinst.iso
+
+## vbox iso
 ln -s /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso
 ln -s ./VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
-wget -P ./iso http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso 
+
+## choose a box name from
+https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
 
 ## build
 veewee vbox build debian-7.3.0-i386-caedus --force --nogui 2> ./tmp/build.err | tee ./tmp/build.out
