@@ -19,6 +19,7 @@ echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant
 echo 'UseDNS no' >> /etc/ssh/sshd_config
 # fix perl locale issue
 sed -i "s/^AcceptEnv /#AcceptEnv /" /etc/ssh/sshd_config
+/etc/init.d/ssh restart
 
 # Install packages
 # remove and exclude doc files
@@ -41,6 +42,8 @@ EOF
 DEFAULT_DEBIAN_RELEASE=jessie
 echo "APT::Default-Release \"${DEFAULT_DEBIAN_RELEASE}\";" > "/etc/apt/apt.conf.d/24${DEFAULT_DEBIAN_RELEASE}"
 #echo 'APT::Install-Recommends "0";' > /etc/apt/apt.conf.d/25norecommends
+
+# update packages
 aptitude -q2 update
 aptitude -q2 -y full-upgrade
 
@@ -57,7 +60,15 @@ aptitude -q2 -y install rbenv ruby-build libsqlite3-dev+M libxml2-dev+M libxslt1
 echo "export PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > /etc/profile.d/00set_path.sh
 # use zsh as login shell
 chsh -s /bin/zsh vagrant
-cat > /home/vagrant/.zshrc <<EOF
+mv /etc/zsh/zshenv /etc/zshenv.orig
+cat > /etc/zsh/zshenv <<"EOF"
+PATH_OLD="$PATH"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+EOF
+cp /etc/zsh/newuser.zshrc.recommended /home/vagrant/.zshrc
+cat >> /home/vagrant/.zshrc <<"EOF"
+
+# init rbenv
 eval "$(rbenv init - zsh)"
 EOF
+chown vagrant:vagrant /home/vagrant/.zshrc

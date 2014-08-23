@@ -46,13 +46,13 @@ Veewee::Definition.declare({
   :sudo_cmd => "echo '%p'|sudo -S sh '%f'",
   :shutdown_cmd => "halt -p",
   :postinstall_files => [
-    "postinstall.sh",
-    #"base.sh",
-    #"vagrant.sh",
-    #"virtualbox.sh",
+    #"finish_immediately.sh",
+    "base.sh",
+    "vagrant.sh",
+    "virtualbox.sh",
     #"puppet.sh",
-    #"cleanup.sh",
-    #"zerodisk.sh"
+    "cleanup.sh",
+    "zerodisk.sh"
   ],
   :postinstall_timeout => "3600"
 })

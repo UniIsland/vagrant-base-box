@@ -8,10 +8,3 @@ env >  /var/log/vagrant_box_build.env.0.txt
 
 # Set up sudo
 echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant
-
-# Tweak sshd to prevent DNS resolution (speed up logins)
-echo 'UseDNS no' >> /etc/ssh/sshd_config
-# fix perl locale issue
-sed -i "s/^AcceptEnv /#AcceptEnv /" /etc/ssh/sshd_config
-/etc/init.d/ssh restart
-

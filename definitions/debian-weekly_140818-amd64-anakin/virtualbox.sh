@@ -8,6 +8,7 @@ if test -f .vbox_version ; then
   # Install the VirtualBox guest additions
   VBOX_VERSION=$(cat .vbox_version)
   VBOX_ISO=VBoxGuestAdditions_$VBOX_VERSION.iso
+  modprobe loop
   mount -o loop $VBOX_ISO /mnt
   yes|sh /mnt/VBoxLinuxAdditions.run --nox11
   umount /mnt
