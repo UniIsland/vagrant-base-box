@@ -4,7 +4,13 @@ Inspired by [[https://github.com/dotzero/vagrant-debian-wheezy-64]]
 # Usage
 
 ## install requirements
-install virtualbox vagrant
+### install virtualbox
+aptitude install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+### install vagrant
+> https://www.vagrantup.com/downloads.html
+wget -P ./tmp https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+dpkg -i ./tmp/vagrant_1.6.3_x86_64.deb
+### bundle
 bundle install
 
 ## [optional] get example definition
@@ -13,16 +19,16 @@ veewee vbox templates
 veewee vbox define `box_name` `template`
 
 ## fetch debian weekly build iso
-#wget -P ./iso http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso 
+> wget -P ./iso http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso
 curl -Lo ./iso/debian-testing-amd64-netinst_$(date +%Y%m%d).iso http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso
 ln -sf debian-testing-amd64-netinst_$(date +%Y%m%d).iso ./iso/debian-testing-amd64-netinst.iso
 
 ## link vbox iso
 ### on Mac OSX
-ln -s /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso/
+ln -sf /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso/
 ### on Linux
-ln -s /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/
-ln -s ./VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
+ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/
+ln -sf ./VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
 
 ## choose a box name from
 https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
