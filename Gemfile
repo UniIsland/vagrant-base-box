@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+#source 'https://ruby.taobao.org'
+ruby '2.1.2'
 
 gem 'veewee'
 gem 'veewee-templates-updater'
