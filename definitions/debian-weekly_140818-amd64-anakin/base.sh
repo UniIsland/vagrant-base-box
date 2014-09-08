@@ -60,7 +60,7 @@ aptitude -q2 -y install rbenv ruby-build libsqlite3-dev+M libxml2-dev+M libxslt1
 echo "export PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > /etc/profile.d/00set_path.sh
 # use zsh as login shell
 chsh -s /bin/zsh vagrant
-mv /etc/zsh/zshenv /etc/zshenv.orig
+mv /etc/zsh/zshenv /etc/zsh/zshenv.orig
 cat > /etc/zsh/zshenv <<"EOF"
 PATH_OLD="$PATH"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
