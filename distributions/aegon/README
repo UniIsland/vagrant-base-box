@@ -1,0 +1,19 @@
+# construct the local vagrant development env from a base box
+
+## usage
+
+###make sure the configured base box is availalbe
+vagrant box list
+### start and enter the base box
+vagrant up
+vagrant ssh
+### run provision scripts
+sudo bash /easybiz/misc/vagrant_box/provision-00-root.sh
+sudo bash /easybiz/misc/vagrant_box/provision-01-virtualbox.sh
+bash /easybiz/misc/vagrant_box/provision-01-user.sh
+
+### cleanup
+bash /easybiz/misc/vagrant_box/provision-90-cleanup.sh
+
+### export box
+vagrant package --base 'name' --output 'easybiz_0.1.0.box'
