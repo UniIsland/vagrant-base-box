@@ -1,7 +1,7 @@
 VBox Config
 -----
 
-- OS: Debian 7.3.0 i386
+- OS: Debian 7.6.0 amd64
 - CPU: 1
 - Memory: 256M
 - Disk: 40G

@@ -1,7 +1,7 @@
 VBox Config
 -----
 
-- OS: Debian jessie amd64 weekly build
+- OS: Debian jessie amd64 daily build 2015-05-30
 - CPU: 1
 - Memory: 256M
 - Disk: 40G

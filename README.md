@@ -25,10 +25,11 @@ ln -sf debian-testing-amd64-netinst_$(date +%Y%m%d).iso ./iso/debian-testing-amd
 
 ## link vbox iso
 ### on Mac OSX
-ln -sf /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso/
+ln -sf /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
 ### on Linux
-ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/
-ln -sf ./VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
+ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
+### symlink
+ln -sf ./VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso ./iso/VBoxGuestAdditions.iso
 
 ## choose a box name from
 https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
@@ -69,7 +70,7 @@ debconf-get-selections >> preseed.cfg
 debconf-get-selections | grep `package_name`
 ### check if preseed file is valid
 debconf-set-selections -c preseed.cfg
-### where to look for debconf template 
+### where to look for debconf template
 /var/log/installer/
 /var/lib/cdebconf while an installation is in progress
 

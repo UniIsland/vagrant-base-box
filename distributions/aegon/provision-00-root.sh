@@ -48,6 +48,15 @@ aptitude -q2 -y install bzip2 ca-certificates curl file git htop less lsb-releas
 aptitude -q2 -y install autoconf automake+M bison build-essential libbz2-dev libreadline6 libreadline6-dev libsqlite3-dev libssl-dev libyaml-dev zlib1g zlib1g-dev libsqlite3-dev+M libxml2-dev+M libxslt1-dev+M libmysqlclient-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 aptitude -q2 -y install rbenv ruby-build libsqlite3-dev+M libxml2-dev+M libxslt1-dev+M
 
+## mysql
+## credentials for local development env. not meant to be kept secret anyway
+MYSQL_ROOT_PASSWD=vagrantmysql
+echo "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWD" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWD" | debconf-set-selections
+aptitude -yq install mysql-server mysql-client redis-server
+## tune mysql
+
+
 # user settings
 echo "export PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > /etc/profile.d/00set_path.sh
 # use zsh as login shell
