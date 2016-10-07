@@ -53,7 +53,7 @@ aptitude -q2 -y full-upgrade
 
 # basic utils
 # already installed with netinst: openssh-server
-aptitude -q2 -y install bash-completion bzip2 ca-certificates curl file git htop less lsb-release lsof nfs-common patch python rsync ruby unzip vim-nox zsh
+aptitude -q2 -y install bzip2 ca-certificates curl file git htop less lsb-release lsof nfs-common patch python rsync ruby unzip vim-nox zsh
 # needed to compile ruby and python
 # ref: https://github.com/sstephenson/ruby-build/wiki
 # ref: https://github.com/yyuu/pyenv/wiki/Common-build-problems
@@ -76,3 +76,7 @@ cat >> /home/vagrant/.zshrc <<"EOF"
 eval "$(rbenv init - zsh)"
 EOF
 chown vagrant:vagrant /home/vagrant/.zshrc
+
+# # install chef
+# echo "chef    chef/chef_server_url    string  $CHEF_SERVER_URL" | debconf-set-selections
+# aptitude -q2 -y install chef

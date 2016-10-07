@@ -26,6 +26,6 @@ if test -f .vbox_version ; then
   #aptitude -q2 -y remove linux-headers-$(uname -r)
   #aptitude -q2 -y purge '~i linux-headers'
 
-echo "VirtualBox Guest Additions ($(cat .vbox_version)) installed." >> /var/log/vagrant_box_build.log
+  echo "VirtualBox Guest Additions ($(cat .vbox_version)) installed." >> /var/log/vagrant_box_build.log
 
 fi

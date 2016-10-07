@@ -39,7 +39,7 @@ vi definitions/debian-weekly_140818-amd64-anakin/*
 ln -s debian-weekly_140818-amd64-anakin definitions/anakin
 
 ## build
-veewee vbox build debian-7.3.0-i386-caedus --force --nogui 2> ./tmp/build.err | tee ./tmp/build.out
+veewee vbox build ebe --force --nogui 2> ./tmp/build.err | tee ./tmp/build.out
 
 ## ssh into the box and do whatever you want
 veewee vbox ssh debian-7.3.0-i386-caedus
