@@ -13,6 +13,9 @@ dpkg -i ./tmp/vagrant_1.6.3_x86_64.deb
 ### bundle
 bundle install
 
+## choose a box name from
+https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
+
 ## [optional] get example definition
 veewee-templates-update
 veewee vbox templates
@@ -31,15 +34,12 @@ ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(V
 ### symlink
 ln -sf ./VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso ./iso/VBoxGuestAdditions.iso
 
-## choose a box name from
-https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
-
 ## custom box definition
 vi definitions/debian-weekly_140818-amd64-anakin/*
 ln -s debian-weekly_140818-amd64-anakin definitions/anakin
 
 ## build
-veewee vbox build ebe --force --nogui 2> ./tmp/build.err | tee ./tmp/build.out
+veewee vbox build fett --force --nogui 2> ./tmp/build.err | tee ./tmp/build.out
 
 ## ssh into the box and do whatever you want
 veewee vbox ssh debian-7.3.0-i386-caedus
