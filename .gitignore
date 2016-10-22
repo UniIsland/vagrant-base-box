@@ -1,6 +1,5 @@
-/box
-/iso
 /tmp
 *.box
+*.iso
 !.gitkeep
 
