@@ -68,7 +68,7 @@ chsh -s `which zsh` vagrant
 mv /etc/zsh/zshenv /etc/zsh/zshenv.orig
 cat > /etc/zsh/zshenv <<"EOF"
 PATH_OLD="$PATH"
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 EOF
 cp /etc/zsh/newuser.zshrc.recommended /home/vagrant/.zshrc
 # cat >> /home/vagrant/.zshrc <<"EOF"
