@@ -163,5 +163,8 @@ DEPENDENCIES
   veewee
   veewee-templates-updater
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.16.1
