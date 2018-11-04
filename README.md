@@ -4,7 +4,7 @@ Custom definitions for building vagrant base boxes.
 
 # Usage
 
-## install requirements
+## install requirements (Debian Linux)
 
 install virtualbox
 
@@ -17,7 +17,23 @@ install vagrant
     wget -P ./tmp https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
     dpkg -i ./tmp/vagrant_1.6.3_x86_64.deb
 
-bundler
+## install requirements (Mac OS)
+
+install virtualbox
+
+install vagrant
+
+install ruby and bundler
+
+    rbenv install <latest ruby>
+    gem install bundler
+
+possible issues with nokogiri, ref: http://www.nokogiri.org/tutorials/installing_nokogiri.html
+
+    brew install libxml2
+    bundle config build.nokogiri --use-system-libraries --with-xml2-include=$(brew --prefix libxml2)/include/libxml2
+
+## install veewee
 
     bundle install
 
@@ -31,26 +47,28 @@ For instance: https://en.wikipedia.org/wiki/List_of_Star_Wars_characters
     veewee vbox templates
     veewee vbox define `box_name` `template`
 
-download debian iso
+download debian iso and take note of md5 checksum
 
-    # with wget
+from debian cdimage portal: https://cdimage.debian.org/cdimage/
+
+with wget, stable
+
     wget -P ./iso http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso
 
-    # with curl, weekly build
-    curl -Lo ./iso/debian-testing-amd64-netinst_$(date +%Y%m%d).iso http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso
+with curl, testing weekly build
 
+    curl -Lo ./iso/debian-testing-amd64-netinst_$(date +%Y%m%d).iso http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso
     ln -sf debian-testing-amd64-netinst_$(date +%Y%m%d).iso ./iso/debian-testing-amd64-netinst.iso
 
 link vbox guest addition iso
 
-    # on Mac OSX
+on Mac OSX
+
     ln -sf /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
 
-    # on Linux
-    ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
+on Linux
 
-    # symlink
-    ln -sf ./VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso ./iso/VBoxGuestAdditions.iso
+    ln -sf /usr/share/virtualbox/VBoxGuestAdditions.iso ./iso/VBoxGuestAdditions_$(VBoxManage --version | egrep -o '^[0-9.]*').iso
 
 ## customize box definition
 
@@ -65,6 +83,10 @@ build with veewee
 ssh into the box and do whatever you want
 
     veewee vbox ssh anakin
+
+validate the box
+
+    veewee vbox validate anakin
 
 export the vm to a .box file
 
@@ -81,6 +103,14 @@ import the box with vagrant
 
 
 # Other Tasks
+
+## start the box in headless mode
+
+    veewee vbox up -n anakin
+
+## skip creation process to run postinstall scripts
+
+    veewee vbox build --skip-to-postinstall anakin
 
 ## Preseeding Debian Installer
 
